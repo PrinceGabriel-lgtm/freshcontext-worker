@@ -1,0 +1,10 @@
+name = "freshcontext-worker"
+main = "src/worker.js"
+compatibility_date = "2025-03-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ACCOUNT_ID = "c2f4430e2f1900b94f0c257284eb1704"
+
+# Add your Cloudflare API token as a secret:
+# npx wrangler secret put CF_API_TOKEN
