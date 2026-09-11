@@ -3,8 +3,13 @@ main = "src/worker.js"
 compatibility_date = "2025-03-01"
 compatibility_flags = ["nodejs_compat"]
 
-[vars]
-ACCOUNT_ID = "c2f4430e2f1900b94f0c257284eb1704"
-
-# Add your Cloudflare API token as a secret:
-# npx wrangler secret put CF_API_TOKEN
+# Both values below are read by src/worker.js when it calls the Browser Rendering
+# API, and both are set as secrets rather than plaintext vars:
+#
+#   npx wrangler secret put ACCOUNT_ID
+#   npx wrangler secret put CF_API_TOKEN
+#
+# ACCOUNT_ID previously lived in [vars] in this file, which published the account
+# identifier in a public repository. On its own it is not a credential, but it is
+# one half of the pair used in the Authorization header in worker.js, and nothing
+# about this Worker requires it to be public.
